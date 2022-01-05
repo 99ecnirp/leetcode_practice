@@ -93,23 +93,49 @@
         0 <= prices[i] <= 104
 
     Code:
-        class Solution {
-            public int maxProfit(int[] prices) {
-                int[] msf = new int[prices.length];
-                msf[msf.length - 1] = prices[prices.length - 1];
-                
-                for(int i = prices.length - 2; i >= 0; i--){
-                    msf[i] = Math.max(prices[i], msf[i+1]);
+       
+        (i) DP
+            class Solution {
+                public int maxProfit(int[] prices) {
+                    int[] msf = new int[prices.length];
+                    msf[msf.length - 1] = prices[prices.length - 1];
+                    
+                    for(int i = prices.length - 2; i >= 0; i--){
+                        msf[i] = Math.max(prices[i], msf[i+1]);
+                    }
+                    
+                    int maxProfit = Integer.MIN_VALUE;
+                    
+                    for(int i = 0; i < prices.length; i++){
+                        maxProfit = Math.max(maxProfit, msf[i] - prices[i]);
+                    }
+                    
+                    return maxProfit;
                 }
-                
-                int maxProfit = Integer.MIN_VALUE;
-                
-                for(int i = 0; i < prices.length; i++){
-                    maxProfit = Math.max(maxProfit, msf[i] - prices[i]);
-                }
-                
-                return maxProfit;
             }
-        }
+
+        (ii) Similar to Kadane Algo
+            class Solution {
+                public int maxProfit(int[] prices) {        
+                    int ans = Integer.MIN_VALUE;
+                        if(prices.length==0){
+                            return 0;
+                        }
+                        int bought = prices[0];                                
+                        for(int i=1;i<prices.length;i++){
+                            if(prices[i]>bought){
+                                if(ans<(prices[i]-bought)){
+                                    ans=prices[i]-bought;
+                                }
+                            }else{
+                                bought=prices[i];
+                            }
+                        }
+                    if(ans == Integer.MIN_VALUE){
+                        return 0;
+                    }
+                    return ans;        
+                }
+            }
 
     
