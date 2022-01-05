@@ -26,7 +26,7 @@
         1 <= nums.length <= 105
         -109 <= nums[i] <= 109
 
-    Answer:
+    Code:
 
         class Solution {
             public boolean containsDuplicate(int[] nums) {
@@ -74,7 +74,7 @@
         1 <= nums.length <= 105
         -104 <= nums[i] <= 104
 
-    Answer: 
+    Code: 
 
         (i)Brute Force
             class Solution {

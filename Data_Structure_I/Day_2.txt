@@ -33,7 +33,7 @@
         -109 <= target <= 109
         Only one valid answer exists.
 
-    Answer:
+    Code:
 
         (i)Brute Force O(n^2)
             public int[] twoSum(int[] nums, int target) {
@@ -110,7 +110,7 @@
         1 <= m + n <= 200
         -109 <= nums1[i], nums2[j] <= 109
     
-    Answer:
+    Code:
         class Solution {
             public void merge(int[] nums1, int m, int[] nums2, int n) {
                 m--;
