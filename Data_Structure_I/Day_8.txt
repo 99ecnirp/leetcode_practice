@@ -1,0 +1,99 @@
+206. Reverse Linked List
+    (Linked List, Recursion)
+
+    Question:
+
+        Given the head of a singly linked list, reverse the list, and return the reversed list.
+
+        
+
+        Example 1:
+
+
+        Input: head = [1,2,3,4,5]
+        Output: [5,4,3,2,1]
+        Example 2:
+
+
+        Input: head = [1,2]
+        Output: [2,1]
+        Example 3:
+
+        Input: head = []
+        Output: []
+        
+
+        Constraints:
+
+        The number of nodes in the list is the range [0, 5000].
+        -5000 <= Node.val <= 5000
+
+    Code:
+        class Solution {
+            public ListNode reverseList(ListNode head) {
+                if(head == null || head.next == null) return head;
+            
+                ListNode pre = null;
+                ListNode cur = head;
+
+
+                while( cur != null ){
+                    ListNode next = cur.next;
+                    cur.next = pre;
+                    pre = cur;
+                    cur = next;
+                }
+
+                return pre;
+            }
+        }
+
+83. Remove Duplicates from Sorted List
+    (Linked List)
+
+    Question:
+
+        Given the head of a sorted linked list, delete all duplicates such that each element appears only once. Return the linked list sorted as well.
+
+        
+
+        Example 1:
+
+
+        Input: head = [1,1,2]
+        Output: [1,2]
+        Example 2:
+
+
+        Input: head = [1,1,2,3,3]
+        Output: [1,2,3]
+        
+
+        Constraints:
+
+        The number of nodes in the list is in the range [0, 300].
+        -100 <= Node.val <= 100
+        The list is guaranteed to be sorted in ascending order.
+
+    Code:
+        class Solution {
+            public ListNode deleteDuplicates(ListNode head) {
+                if(head == null){
+                    return null;
+                }else if(head.next == null){
+                    return head;
+                }
+                ListNode pre = head;
+                ListNode curr = head.next;
+                while(curr != null){
+                    if(pre.val != curr.val){
+                        pre.next = curr;
+                        pre = pre.next;
+                    }            
+                    curr = curr.next;
+                }
+                pre.next = curr;
+                
+                return head;
+            }
+        }
